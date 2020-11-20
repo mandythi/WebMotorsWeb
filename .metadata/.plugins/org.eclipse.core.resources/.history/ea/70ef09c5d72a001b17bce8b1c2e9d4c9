@@ -1,0 +1,37 @@
+package pages.com.br;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+import config.com.br.Hooks;
+import cucumber.api.Scenario;
+import framework.com.br.Framework;
+
+public class WebMotors_Busca_Page {
+	protected WebDriver driver;
+	protected Scenario scenario;
+	protected Framework framework;
+	
+	public WebMotors_Busca_Page() {
+		this.driver = Hooks.getDriver();
+		this.scenario = Hooks.getScenario();
+		PageFactory.initElements(driver, this);
+		framework = new Framework(this.driver, this.scenario)
+	}
+	
+	@FindBy(id="searchBar")
+	public WebElement idTxtBusca;
+	
+	@FindBy(className="SearchBar__results__result__name")
+	public WebElement classDivBusca;
+	
+	public void realizaBusca(String marca, String modelo) {
+		
+		String marcaModelo = marca + " " + modelo;
+		framework.preencheCampo(idTxtBusca, marcaModelo);
+		
+	}
+}

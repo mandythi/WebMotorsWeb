@@ -1,0 +1,13 @@
+package steps.com.br;
+
+import cucumber.api.PendingException;
+import cucumber.api.java.pt.Dado;
+
+public class WebMotorsContexto_Steps {
+
+	@Dado("^que acesso o sistema$")
+	public void que_acesso_o_sistema() throws Throwable {
+		// Write code here that turns the phrase above into concrete actions
+		throw new PendingException();
+	}
+}

@@ -1,0 +1,40 @@
+package steps.com.br;
+
+import cucumber.api.PendingException;
+import cucumber.api.java.pt.Então;
+import cucumber.api.java.pt.Quando;
+
+public class WebMotors_Busca_Steps {
+
+	@Quando("^realizo a busca por Honda e City$")
+	public void realizo_a_busca_por_Honda_e_City() throws Throwable {
+		// Write code here that turns the phrase above into concrete actions
+		throw new PendingException();
+	}
+
+	@Quando("^valido os campos Honda, City e seleciono a (\\d+)\\.(\\d+) DX (\\d+)V FLEX (\\d+)P AUTOMÁTICO$")
+	public void valido_os_campos_Honda_City_e_seleciono_a_DX_V_FLEX_P_AUTOMÁTICO(int arg1, int arg2, int arg3, int arg4)
+			throws Throwable {
+		// Write code here that turns the phrase above into concrete actions
+		throw new PendingException();
+	}
+
+	@Quando("^na área Vendedor seleciono Loja$")
+	public void na_área_Vendedor_seleciono_Loja() throws Throwable {
+		// Write code here that turns the phrase above into concrete actions
+		throw new PendingException();
+	}
+
+	@Quando("^seleciono um veiculo da lista$")
+	public void seleciono_um_veiculo_da_lista() throws Throwable {
+		// Write code here that turns the phrase above into concrete actions
+		throw new PendingException();
+	}
+
+	@Então("^verifico e valido estoque da loja$")
+	public void verifico_e_valido_estoque_da_loja() throws Throwable {
+		// Write code here that turns the phrase above into concrete actions
+		throw new PendingException();
+	}
+
+}
