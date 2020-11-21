@@ -1,0 +1,83 @@
+package pages.com.br;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+import config.com.br.Hooks;
+import cucumber.api.Scenario;
+import framework.com.br.Framework;
+
+public class WebMotors_Busca_Page {
+	protected WebDriver driver;
+	protected Scenario scenario;
+	protected Framework framework;
+
+	public WebMotors_Busca_Page() {
+		this.driver = Hooks.getDriver();
+		this.scenario = Hooks.getScenario();
+		PageFactory.initElements(driver, this);
+		framework = new Framework(this.driver, this.scenario);
+	}
+
+	@FindBy(id = "searchBar")
+	public WebElement idTxtBusca;
+
+	@FindBy(className = "SearchBar__results__result__name")
+	public WebElement classDivBusca;
+
+	@FindBy(xpath = "//*[@class='sc-bRBYWo gLEvJK']")
+	public WebElement xpathDivContainerResultado;
+
+	@FindBy(xpath = "//*[@class='Filters__line Filters__line--uppercase Filters__line--make Filters__line--icon Filters__line--icon--close']")
+	public WebElement xpathDivMarcaResultado;
+
+	@FindBy(xpath = "//*[@class='Filters__line Filters__line--uppercase Filters__line--strong  Filters__line--icon Filters__line--icon--close']")
+	public WebElement xpathDivModeloResultado;
+
+	@FindBy(xpath = "//*[@class='Filters__line Filters__line--icon Filters__line--icon Filters__line--icon--right Filters__line--gray']")
+	public WebElement xpathDivVersoesResultado;
+
+	@FindBy(xpath = "//*[@class='Search-result Search-result--container-left']")
+	public WebElement xpathEscolhaVersao;
+
+	@FindBy(id = "Loja")
+	public WebElement idCheckBoxLoja;
+
+	@FindBy(xpath = "//*[@class='ContainerCardVehicle ads_align']")
+	public WebElement xpathConteinerBusca;
+
+	@FindBy(xpath = "//*[@class='sc-hzNEM beFZWZ']")
+	public WebElement xpathConteinerItem;
+
+	public void realizaBusca(String marca, String modelo) {
+
+		String marcaModelo = marca + " " + modelo;
+		framework.preencheCampo(idTxtBusca, marcaModelo);
+		framework.click(classDivBusca);
+		// Aguarda resultado da busca ser visível
+		framework.aguarda(3);
+		framework.existeElemento(xpathDivContainerResultado, 30);
+		framework.relatorio(true, "Busca efetuada com sucesso!");
+	}
+
+	public void confirmaResultadoBusca(String marca, String modelo, String versao) {
+
+		framework.javascriptScrollElemento(xpathDivMarcaResultado);
+		framework.comparaTextoElemento(xpathDivMarcaResultado, marca.toUpperCase());
+		framework.comparaTextoElemento(xpathDivModeloResultado, modelo.toUpperCase());
+		framework.click(xpathDivVersoesResultado);
+		framework.aguarda(2);
+		framework.clickTextoLink(versao);
+		framework.aguarda(2);
+		framework.relatorio(true, "Validação de busca efetuada com sucesso!");
+	}
+
+	public void escolheOpcaoLoja(String vendedor) {
+
+		framework.aguarda(2);
+		framework.javascriptClickElemento(idCheckBoxLoja);
+
+	}
+}

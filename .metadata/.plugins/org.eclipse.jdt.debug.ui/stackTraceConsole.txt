@@ -1,0 +1,8 @@
+java.lang.AssertionError: Erro ao verificar o elemento Proxy element for: DefaultElementLocator 'By.id: found-ads'
+	at org.junit.Assert.fail(Assert.java:88)
+	at framework.com.br.Framework.relatorio(Framework.java:27)
+	at framework.com.br.Framework.existeElemento(Framework.java:60)
+	at pages.com.br.WebMotors_Busca_Page.realizaBusca(WebMotors_Busca_Page.java:61)
+	at steps.com.br.WebMotors_Busca_Steps.realizo_a_busca_por_e(WebMotors_Busca_Steps.java:12)
+	at ?.Quando realizo a busca por "Honda" e "City"(WebMotors_Busca.feature:13)
+

@@ -43,7 +43,7 @@ formatter.step({
 });
 formatter.step({
   "line": 14,
-  "name": "valido os campos \u003cMarca\u003e, \u003cModelo\u003e e seleciono a \u003cVersão\u003e",
+  "name": "valido os campos \u003cMarca\u003e, \u003cModelo\u003e e seleciono a \u003cVersao\u003e",
   "keyword": "E "
 });
 formatter.step({
@@ -71,7 +71,7 @@ formatter.examples({
       "cells": [
         "Marca",
         "Modelo",
-        "Versão",
+        "Versao",
         "Vendedor"
       ],
       "line": 20,
@@ -86,12 +86,22 @@ formatter.examples({
       ],
       "line": 21,
       "id": "testes-na-funcionalidade-de-busca;realizar-busca;;2"
+    },
+    {
+      "cells": [
+        "\"Honda\"",
+        "\"City\"",
+        "\"1.5 DX 16V FLEX 4P AUTOMÁTICO\"",
+        "\"Loja\u003eConcessionária\""
+      ],
+      "line": 22,
+      "id": "testes-na-funcionalidade-de-busca;realizar-busca;;3"
     }
   ],
   "keyword": "Exemplos"
 });
 formatter.before({
-  "duration": 6194346700,
+  "duration": 6180403300,
   "status": "passed"
 });
 formatter.background({
@@ -109,8 +119,10 @@ formatter.step({
 formatter.match({
   "location": "WebMotorsContexto_Steps.que_acesso_o_sistema()"
 });
+formatter.write("Site carregado com sucesso!");
+formatter.embedding("image/png", "embedded0.png");
 formatter.result({
-  "duration": 1181002400,
+  "duration": 8134959200,
   "status": "passed"
 });
 formatter.scenario({
@@ -181,11 +193,11 @@ formatter.match({
   ],
   "location": "WebMotors_Busca_Steps.realizo_a_busca_por_e(String,String)"
 });
-formatter.write("Erro ao verificar o elemento Proxy element for: DefaultElementLocator \u0027By.id: found-ads\u0027");
+formatter.write("Busca efetuada com sucesso!");
+formatter.embedding("image/png", "embedded1.png");
 formatter.result({
-  "duration": 70008675600,
-  "error_message": "org.openqa.selenium.NoSuchWindowException: no such window: target window already closed\nfrom unknown error: web view not found\n  (Session info: chrome\u003d86.0.4240.198)\nBuild info: version: \u00273.141.59\u0027, revision: \u0027e82be7d358\u0027, time: \u00272018-11-14T08:17:03\u0027\nSystem info: host: \u0027NOTE_4DFZ23\u0027, ip: \u0027192.168.0.17\u0027, os.name: \u0027Windows 10\u0027, os.arch: \u0027amd64\u0027, os.version: \u002710.0\u0027, java.version: \u00271.8.0_251\u0027\nDriver info: org.openqa.selenium.chrome.ChromeDriver\nCapabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 86.0.4240.198, chrome: {chromedriverVersion: 86.0.4240.22 (398b0743353ff..., userDataDir: C:\\Users\\AMANDA~1.NAS\\AppDa...}, goog:chromeOptions: {debuggerAddress: localhost:49366}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}\nSession ID: 624a89653d7103f0b5c2cd4dd9e84eb3\r\n\tat sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)\r\n\tat sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)\r\n\tat sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)\r\n\tat java.lang.reflect.Constructor.newInstance(Constructor.java:423)\r\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)\r\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)\r\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)\r\n\tat org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)\r\n\tat org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:609)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.getScreenshotAs(RemoteWebDriver.java:295)\r\n\tat framework.com.br.Framework.relatorio(Framework.java:23)\r\n\tat framework.com.br.Framework.existeElemento(Framework.java:59)\r\n\tat pages.com.br.WebMotors_Busca_Page.realizaBusca(WebMotors_Busca_Page.java:40)\r\n\tat steps.com.br.WebMotors_Busca_Steps.realizo_a_busca_por_e(WebMotors_Busca_Steps.java:12)\r\n\tat ✽.Quando realizo a busca por \"Honda\" e \"City\"(WebMotors_Busca.feature:13)\r\n",
-  "status": "failed"
+  "duration": 5353214800,
+  "status": "passed"
 });
 formatter.match({
   "arguments": [
@@ -204,8 +216,15 @@ formatter.match({
   ],
   "location": "WebMotors_Busca_Steps.valido_os_campos_e_seleciono_a(String,String,String)"
 });
+formatter.write("Os textos são equivalentes:\nTexto esperado \u003d HONDA\nTexto obtido \u003d HONDA");
+formatter.embedding("image/png", "embedded2.png");
+formatter.write("Os textos são equivalentes:\nTexto esperado \u003d CITY\nTexto obtido \u003d CITY");
+formatter.embedding("image/png", "embedded3.png");
+formatter.write("Validação de busca efetuada com sucesso!");
+formatter.embedding("image/png", "embedded4.png");
 formatter.result({
-  "status": "skipped"
+  "duration": 6901205400,
+  "status": "passed"
 });
 formatter.match({
   "arguments": [
@@ -216,23 +235,195 @@ formatter.match({
   ],
   "location": "WebMotors_Busca_Steps.na_área_Vendedor_seleciono(String)"
 });
+formatter.write("Vendedor escolhido com sucesso!");
+formatter.embedding("image/png", "embedded5.png");
 formatter.result({
-  "status": "skipped"
+  "duration": 4709401200,
+  "status": "passed"
 });
 formatter.match({
   "location": "WebMotors_Busca_Steps.seleciono_um_veiculo_da_lista()"
 });
+formatter.write("Veiculo escolhido com sucesso!");
+formatter.embedding("image/png", "embedded6.png");
 formatter.result({
-  "status": "skipped"
+  "duration": 3614617100,
+  "status": "passed"
 });
 formatter.match({
   "location": "WebMotors_Busca_Steps.verifico_e_valido_estoque_da_loja()"
 });
+formatter.write("O estoque da loja Lino Automoveis foi validado\nNúmero de veículos: 6");
+formatter.embedding("image/png", "embedded7.png");
 formatter.result({
-  "status": "skipped"
+  "duration": 6343483000,
+  "status": "passed"
 });
 formatter.after({
-  "duration": 628916200,
+  "duration": 700764400,
+  "status": "passed"
+});
+formatter.before({
+  "duration": 5358829500,
+  "status": "passed"
+});
+formatter.background({
+  "line": 8,
+  "name": "Abrir o site",
+  "description": "",
+  "type": "background",
+  "keyword": "Contexto"
+});
+formatter.step({
+  "line": 9,
+  "name": "que acesso o sistema",
+  "keyword": "Dado "
+});
+formatter.match({
+  "location": "WebMotorsContexto_Steps.que_acesso_o_sistema()"
+});
+formatter.write("Site carregado com sucesso!");
+formatter.embedding("image/png", "embedded8.png");
+formatter.result({
+  "duration": 8412083400,
+  "status": "passed"
+});
+formatter.scenario({
+  "line": 22,
+  "name": "Realizar busca",
+  "description": "",
+  "id": "testes-na-funcionalidade-de-busca;realizar-busca;;3",
+  "type": "scenario",
+  "keyword": "Esquema do Cenário",
+  "tags": [
+    {
+      "line": 11,
+      "name": "@ct01"
+    },
+    {
+      "line": 3,
+      "name": "@busca"
+    }
+  ]
+});
+formatter.step({
+  "line": 13,
+  "name": "realizo a busca por \"Honda\" e \"City\"",
+  "matchedColumns": [
+    0,
+    1
+  ],
+  "keyword": "Quando "
+});
+formatter.step({
+  "line": 14,
+  "name": "valido os campos \"Honda\", \"City\" e seleciono a \"1.5 DX 16V FLEX 4P AUTOMÁTICO\"",
+  "matchedColumns": [
+    0,
+    1,
+    2
+  ],
+  "keyword": "E "
+});
+formatter.step({
+  "line": 15,
+  "name": "na área Vendedor seleciono \"Loja\u003eConcessionária\"",
+  "matchedColumns": [
+    3
+  ],
+  "keyword": "E "
+});
+formatter.step({
+  "line": 16,
+  "name": "seleciono um veiculo da lista",
+  "keyword": "E "
+});
+formatter.step({
+  "line": 17,
+  "name": "verifico e valido estoque da loja",
+  "keyword": "Então "
+});
+formatter.match({
+  "arguments": [
+    {
+      "val": "Honda",
+      "offset": 21
+    },
+    {
+      "val": "City",
+      "offset": 31
+    }
+  ],
+  "location": "WebMotors_Busca_Steps.realizo_a_busca_por_e(String,String)"
+});
+formatter.write("Busca efetuada com sucesso!");
+formatter.embedding("image/png", "embedded9.png");
+formatter.result({
+  "duration": 5349429100,
+  "status": "passed"
+});
+formatter.match({
+  "arguments": [
+    {
+      "val": "Honda",
+      "offset": 18
+    },
+    {
+      "val": "City",
+      "offset": 27
+    },
+    {
+      "val": "1.5 DX 16V FLEX 4P AUTOMÁTICO",
+      "offset": 48
+    }
+  ],
+  "location": "WebMotors_Busca_Steps.valido_os_campos_e_seleciono_a(String,String,String)"
+});
+formatter.write("Os textos são equivalentes:\nTexto esperado \u003d HONDA\nTexto obtido \u003d HONDA");
+formatter.embedding("image/png", "embedded10.png");
+formatter.write("Os textos são equivalentes:\nTexto esperado \u003d CITY\nTexto obtido \u003d CITY");
+formatter.embedding("image/png", "embedded11.png");
+formatter.write("Validação de busca efetuada com sucesso!");
+formatter.embedding("image/png", "embedded12.png");
+formatter.result({
+  "duration": 7030697900,
+  "status": "passed"
+});
+formatter.match({
+  "arguments": [
+    {
+      "val": "Loja\u003eConcessionária",
+      "offset": 28
+    }
+  ],
+  "location": "WebMotors_Busca_Steps.na_área_Vendedor_seleciono(String)"
+});
+formatter.write("Vendedor escolhido com sucesso!");
+formatter.embedding("image/png", "embedded13.png");
+formatter.result({
+  "duration": 5780788500,
+  "status": "passed"
+});
+formatter.match({
+  "location": "WebMotors_Busca_Steps.seleciono_um_veiculo_da_lista()"
+});
+formatter.write("Veiculo escolhido com sucesso!");
+formatter.embedding("image/png", "embedded14.png");
+formatter.result({
+  "duration": 3603327700,
+  "status": "passed"
+});
+formatter.match({
+  "location": "WebMotors_Busca_Steps.verifico_e_valido_estoque_da_loja()"
+});
+formatter.write("O estoque da loja Toyolex Aracaju foi validado\nNúmero de veículos: 29");
+formatter.embedding("image/png", "embedded15.png");
+formatter.result({
+  "duration": 6447967100,
+  "status": "passed"
+});
+formatter.after({
+  "duration": 715137800,
   "status": "passed"
 });
 });

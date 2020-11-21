@@ -1,0 +1,26 @@
+package pages.com.br;
+
+import org.openqa.selenium.WebDriver;
+
+import config.com.br.Hooks;
+import cucumber.api.Scenario;
+import framework.com.br.Framework;
+
+public class WebMotors_Contexto_Page {
+
+	String url = "https://www.webmotors.com.br/";
+	protected WebDriver driver;
+	protected Scenario scenario;
+	protected Framework framework;
+
+	public WebMotors_Contexto_Page() {
+		this.driver = Hooks.getDriver();
+		this.scenario = Hooks.getScenario();
+		framework = new Framework(this.driver, this.scenario);
+	}
+
+	public void acessoSistema() {
+		driver.navigate().to(url);
+		framework.relatorio(true, "Site carregado com sucesso!");
+	}
+}

@@ -1,19 +1,35 @@
 package pages.com.br;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import config.com.br.Hooks;
+import cucumber.api.Scenario;
+import framework.com.br.Framework;
 
 public class WebMotors_Contexto_Page {
 
 	String url = "https://www.webmotors.com.br/";
 	protected WebDriver driver;
-
+	protected Scenario scenario;
+	protected Framework framework;
+	
+	@FindBy(id = "searchBar")
+	public WebElement idTxtBusca;
+	
 	public WebMotors_Contexto_Page() {
 		this.driver = Hooks.getDriver();
+		this.scenario = Hooks.getScenario();
+		PageFactory.initElements(driver, this);
+		framework = new Framework(this.driver, this.scenario);
 	}
-
+	
 	public void acessoSistema() {
 		driver.navigate().to(url);
+		framework.existeElemento(idTxtBusca, 10);
+		framework.aguarda(4);
+		framework.relatorio(true, "Site carregado com sucesso!");
 	}
 }

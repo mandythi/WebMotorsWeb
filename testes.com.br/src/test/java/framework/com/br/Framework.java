@@ -1,12 +1,18 @@
 package framework.com.br;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.junit.Assert;
+
 import cucumber.api.Scenario;
 
 public class Framework {
@@ -19,6 +25,7 @@ public class Framework {
 	}
 
 	public void relatorio(boolean status, String msg) {
+
 		scenario.write(msg);
 		scenario.embed(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES), "image/png");
 
@@ -36,7 +43,7 @@ public class Framework {
 		}
 
 	}
-	
+
 	public void click(WebElement elemento) {
 		existeElemento(elemento, 10);
 		try {
@@ -46,17 +53,141 @@ public class Framework {
 		}
 
 	}
-	
+
 	public void existeElemento(WebElement elemento, int timeOut) {
-		
+
 		WebDriverWait wait = new WebDriverWait(driver, timeOut);
-		
+
 		try {
 			if (wait.until(ExpectedConditions.visibilityOfAllElements(elemento)) == null) {
 				relatorio(false, "O elemento " + elemento + " não está visível");
 			}
 		} catch (Exception e) {
-			relatorio(false, "Erro ao verificar o elemento "+ elemento);
+			relatorio(false, "Erro ao verificar o elemento " + elemento);
+		}
+	}
+
+	public String pegarTexto(WebElement elemento) {
+
+		existeElemento(elemento, 10);
+		String valor = null;
+
+		try {
+			valor = elemento.getText();
+
+		} catch (Exception e) {
+			relatorio(false, "Não foi possível pegar o texto do elemento " + elemento);
+		}
+		return valor;
+	}
+
+	public void comparaTextoElemento(WebElement elemento, String texto) {
+
+		String textoElemento = pegarTexto(elemento);
+
+		try {
+			if (textoElemento.equals(texto)) {
+				relatorio(true,
+						"Os textos são equivalentes:\nTexto esperado = " + texto + "\nTexto obtido = " + textoElemento);
+			} else {
+				relatorio(false,
+						"Os textos são diferentes:\nTexto esperado = " + texto + "\nTexto obtido = " + textoElemento);
+			}
+
+		} catch (Exception e) {
+			relatorio(false, "Erro : Não foi possível pegar o texto do elemento " + elemento);
+		}
+
+	}
+
+	public void clickTextoLink(String textoLink) {
+		WebElement elementoLink = driver.findElement(By.linkText(textoLink));
+		existeElemento(elementoLink, 10);
+		try {
+			elementoLink.click();
+		} catch (Exception e) {
+			relatorio(false, "Erro : Não foi possível efetuar o click no link " + textoLink);
+		}
+
+	}
+
+	public void aguarda(int timeOut) {
+
+		try {
+			Thread.sleep(timeOut * 1000);
+		} catch (Exception e) {
+			relatorio(false, "Erro ao aguardar");
+		}
+
+	}
+
+	public void javascriptScrollElemento(WebElement elemento) {
+
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+
+		try {
+			js.executeScript("arguments[0].scrollIntoView(true);", elemento);
+		} catch (Exception e) {
+			relatorio(false, "Erro : scroll para o elemento " + elemento + " não foi realizado");
+		}
+
+	}
+
+	public void javascriptClickElemento(WebElement elemento) {
+
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+
+		try {
+			js.executeScript("arguments[0].click();", elemento);
+		} catch (Exception e) {
+			relatorio(false, "Erro :não foi possivel efetuar o click no " + elemento);
+		}
+
+	}
+
+	public void clickElementoFilhoPorTexto(WebElement elementoPai, By elementoFilho, String texto) {
+
+		boolean achou = false;
+		List<WebElement> itens = elementoPai.findElements(elementoFilho);
+
+		for (WebElement item : itens) {
+			if (item.getText().equals(texto)) {
+				click(item);
+				achou = true;
+				break;
+			}
+		}
+
+		if (achou == false) {
+			relatorio(false, "Não foi possível efetuar o click no elemento com o texto " + texto);
+		}
+
+	}
+
+	public void selecionaAba(int numeroAba) {
+		List<String> abas = new ArrayList<>(driver.getWindowHandles());
+		try {
+			driver.switchTo().window(abas.get(numeroAba));
+		} catch (Exception e) {
+			relatorio(false, "Erro: não foi possível trocar de aba " + numeroAba + 1);
+
+		}
+	}
+
+	public boolean verificaElementoVisível(WebElement elemento, int timeOut) {
+		
+		boolean existe = false;
+		WebDriverWait wait = new WebDriverWait(driver, timeOut);
+
+		try {
+			if (wait.until(ExpectedConditions.visibilityOfAllElements(elemento)) != null) {
+				existe = true;
+			}
+			
+			return existe;
+					
+		} catch (Exception e) {
+			return false;
 		}
 	}
 }
